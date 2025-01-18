@@ -1,0 +1,34 @@
+@use  "../../layout.scss" as *;
+.education-page{
+    padding-top: 100px;
+}
+.period-card{
+    width: 100%;
+    height: 100%;
+    border-radius: 10%;
+}
+.bold-label{
+    font-weight: 700;
+    padding: 20px 0 0 100px;
+    box-sizing: border-box;
+    font-size: rem(84);
+    opacity: 1;
+    transition: all 0.5s ease;
+    text-decoration: underline;
+    
+}
+.periods{
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    height: auto;
+    width: 100%;
+    padding: 0 0 20px 0;
+}
+.period-div{
+    position: relative;
+}

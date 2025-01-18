@@ -1,0 +1,35 @@
+@import "../../layout.scss";
+
+.input{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: brown;
+    border-radius: 10px;
+    width: 50%;
+    height: 60px;
+    border: 1px solid black;
+    font-size: rem(26);
+    gap:10px;
+    padding-left: 7px;
+    transition: transform 0.5s ease;
+    box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.5);
+}
+.input {
+    &.focused {
+        transform: (scale(1.15) translate(-180px,20px));
+        box-shadow: 10px 15px 7px rgba(0, 0, 0, 0.5);
+    }
+}
+.icon-input{
+    display: inline;
+}
+.search{
+    display: inline;
+    padding-left: 10px;
+    width: 85%;
+    height: 75%;
+}
+.input-button{
+    margin-left: 3px;
+}

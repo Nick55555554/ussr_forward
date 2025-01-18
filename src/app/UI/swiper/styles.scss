@@ -1,0 +1,119 @@
+@use  "../../layout.scss" as *;
+
+.inSlide{
+    width: 400px;
+    height: 320px;
+    background: linear-gradient(#AB0C0C70, #FFAE0080);
+    // border: 7px solid gold;
+    margin-top: rem(30);
+    overflow: hidden;
+    border-radius: 5%;
+}
+
+.swiper-slide-active  .inSlide{
+    transform: scale(1.2);
+}
+@media (max-width: 1250px){
+    .inSlide{
+        width: rem(300);
+        height: rem(270);
+    }
+}
+@media (max-width: 1000px){
+    .inSlide{
+        width: rem(250);
+        height: rem(270);
+    }
+}
+
+@media (max-width: 870px){
+    .inSlide{
+        width: rem(300);
+        height: rem(270);
+    }
+    .swiper-slide-active  .inSlide{
+        transform: scale(1.2);
+    }
+}
+@media (max-width: 660px){
+    .inSlide{
+        width: rem(250);
+        height: rem(300);
+    }
+    .swiper-slide-active  .inSlide{
+        transform: scale(1);
+    }
+}
+@media (max-width: 550px){
+    .inSlide{
+        width: rem(350);
+        height: rem(320);
+        margin-left: 70px;
+    }
+    .swiper-slide-active  .inSlide{
+        transform: scale(1);
+    }
+}
+@media (max-width: 480px){
+    .inSlide{
+        width: rem(270);
+        height: rem(300);
+        margin-left: 50px;
+    }
+    .swiper-slide-active  .inSlide{
+        transform: scale(1);
+    }
+}
+@media (max-width: 360px){
+    .inSlide{
+        width: rem(250);
+        height: rem(280);
+        margin-left: 30px;
+    }
+    .swiper-slide-active  .inSlide{
+        transform: scale(1);
+    }
+}
+.mySwiper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:500px;
+    background-color: #1E00FF90;
+    // border: 8px solid gold;
+}
+
+
+.mySwiper .swiper-slide-active {
+    transform: scale(1.05);
+    padding: 30px 0;
+}
+.mySwiper .swiper-slide {
+    transition: transform 0.8s ease;
+    padding-top: 30px 0;
+    
+}
+@keyframes multiPhaseAnimation {
+    0% {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    50% {
+        transform: translateY(10px);
+        opacity: 0.5; 
+    }
+    100% {
+        transform: translateY(0); 
+        opacity: 1; 
+    }
+}
+.main-h2{
+    padding: 10px 20px;
+    font-weight: 600;
+    color: silver
+}
+.main-h6{
+    padding: 20px 25px;
+    font-weight: 500;
+    color:rgb(87, 0, 0)
+}

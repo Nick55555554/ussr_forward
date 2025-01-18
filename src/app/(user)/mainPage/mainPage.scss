@@ -1,0 +1,163 @@
+@use  "../../layout.scss" as *;
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+.vignette {
+    position: relative;
+    display: inline-block; /* или block, в зависимости от ваших нужд */
+    overflow: hidden; /* Скрывает часть изображения, выходящую за пределы контейнера */
+}
+.vignette::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 5%;
+    background: radial-gradient(circle, rgba(218, 217, 217, 0.5), rgba(117, 117, 117, 0.403) 70%);
+    pointer-events: none; /* Позволяет взаимодействовать с изображением под виньеткой */
+}
+.title-img{
+    width: 100%;
+    aspect-ratio: 2 / 1;
+    animation-name: easyin;
+    animation-delay: 0s;
+    animation-duration: 3s;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in-out;
+    border: none;
+}
+
+.nextColor{
+    background-color: brown;
+    transition:  background-color 4s ease 0s;
+}
+.firstColor{
+    background-color: white;
+    transition:  background-color 4s ease 0s;
+}
+.title-div{
+    width: 100%;
+    aspect-ratio: 2 / 1;
+    position: relative;
+    border: none;
+}
+@keyframes easyin{
+    0% {opacity: 0.1}
+    25% {opacity: 0.3}
+    50% {opacity: 0.5}
+    75% {opacity: 0.7}
+    100%{opacity: 1}
+}
+
+.split-line{
+    width: 100%;
+    height: rem(50);
+    // border: 5px solid gold;
+    box-sizing: border-box;
+    background-color: #FF0000;
+}
+.main-frame{
+    height: auto;
+}
+.bold-label{
+    font-weight: 700;
+    padding: 20px 0 20px 100px;
+    box-sizing: border-box;
+    font-size: rem(84);
+    opacity: 1;
+    transition: all 0.5s ease;
+}
+.bold-label::first-letter{
+    font-size: 80px;
+    font-weight: 800;
+    font-family: "Playfair Display", serif;
+}
+@media(max-width: 680){
+    .bold-label{
+        padding: 0 20px;
+    }
+}
+@media(max-width: 400){
+    .bold-label{
+        padding: 0;
+    }
+    
+}
+.flex-statistic, .flex-articles{
+    display: flex;
+    padding-top: rem(50);
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.flex-statistic{
+    justify-content: space-evenly;
+
+}
+.flex-articles{
+    justify-content: start;
+    gap:60px;
+    margin-left: 7%;
+    margin-bottom: 30px;
+}
+
+.statistic-text1, .statistic-text2{
+    position: absolute;
+    left: 20px;
+    font-weight: 700;
+    z-index: 1;
+}
+.statistic-text1{
+    top: 70px;
+}
+.statistic-text2{
+    top: 200px;
+}
+@media(max-width: 768px){
+    .statistic-text1{
+        top: 40px;
+        font-weight:800;
+    }
+    .statistic-text2{
+        top: 170px;
+        font-weight: 800;
+    }
+}
+@media(max-width: 480px){
+    .statistic-text1{
+        top: 10px;
+    }
+    .statistic-text2{
+        top: 100px;
+    }
+}
+.back-img{
+    width: 100%;
+    height: 100%;
+    object-fit:cover;
+    display: block; /* Убирает отступы под изображением */
+    width: 100%; /* Устанавливает ширину изображения */
+    height: auto;
+    border-radius: 15px;
+}
+// .back-img:hover{
+//     transform: scale(1.03);
+//     cursor: pointer;
+// }
+@keyframes easyin_with_opacity{
+    0% {opacity: 0.1}
+    33% {opacity: 0.3}
+    67% {opacity: 0.5}
+    100% {opacity: 0.6}
+}
+// .quote{
+//     z-index: 1;
+//     font-weight: 800;
+//     font-size: rem(42);
+//     position: absolute;
+//     padding:25% 0 0 0;
+//     color: white;
+//     animation: easyin 1s ease-out 0;
+// }
+
+

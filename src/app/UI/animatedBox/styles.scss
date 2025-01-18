@@ -1,0 +1,58 @@
+.box, .bigBox, .tallBox{
+    text-align: left;
+    opacity: 0; 
+    transition: opacity 0.5s ease; 
+    border-radius: 15px;
+    padding:10px 0;
+    transition: transform 0.3s ease, opacity 0.2s ease;
+}
+.box{
+    width: 510px; 
+}
+.bigBox{
+    width: 80%;
+    height: auto;
+    aspect-ratio: 7/3;
+    margin: 0 auto;
+}
+.tallBox{
+    width: 400px;
+    height: 550px;
+    overflow: hidden;
+}
+@media(max-width: 680px){
+    .box{
+        width: 410px;
+        height: 340px;
+    }
+}
+@media(max-width: 450px){
+    .box{
+        width: 310px;
+        height: 310px;
+    }
+}
+
+@media(max-width: 450px){
+    .bigBox{
+        width: 310px;
+        height: auto;
+    }
+}
+@media(max-width: 480px){
+    .tallBox{
+        width: 310px;
+        height: 630px;
+    }
+}
+
+.box.visible, .bigBox.visible, .tallBox.visible  {
+    animation: multiPhaseAnimation 1.5s ease-out forwards; 
+    opacity: 1;
+}
+.box.visible:hover{
+    transform: scale(1.05);
+    transition: transform 0.2s ease;
+    cursor: pointer;
+}
+

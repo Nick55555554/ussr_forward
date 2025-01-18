@@ -1,0 +1,128 @@
+@import "../../layout.scss";
+.artikel{
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(  #fa7777,#d00e0e);
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    // border: 10px solid gold;
+    border-radius: 10px;
+    transition: transform 0.5s ease-in;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+
+}
+.artikel:hover{
+    transform: scale(1.05);
+    border: 8px solid #d00e0e;
+}
+
+.artikel .start_text, .artikel .many_text {
+    width: 90%;
+    margin: 8px 5%;
+    border-radius: 5px;
+    padding-left: 10px;
+    font-size: rem(22);
+    font-weight: 500;
+    height: 33%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    background-color: rgb(252, 236, 213);
+    border: 2px solid black;
+}
+.artikel .start_text:hover, 
+.artikel .many_text:hover,
+.artikel .article_label:hover{
+    cursor: default;
+    hyphens: auto;
+    overflow-wrap: break-word; 
+    word-wrap: break-word;
+}
+.artikel .start_text{
+    height: 40%;
+}
+.artikel .many_text{
+    transition: height 0.5s ease-in;
+}
+.artikel .many_text{
+    height: 70%;
+}
+.artikel .article_label{
+    display: inline;
+    padding: 5% 0 0 7%;
+    font-size: rem(28);
+    font-weight: 700;
+}
+.artikel .line{
+    width: 100%;
+    height: 10px;
+    background-color: black;
+    margin-top: 10px;
+}
+.artikel .details{
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    align-items: center;
+    font-size: rem(28);
+    font-weight: 600;
+    padding: 5px 0 0 40%;
+    cursor: pointer;
+}
+@media(max-width: 480px ){
+    .artikel .details{
+        padding: 5px 0 0 35%;
+        font-size: rem(24);
+    }
+    .artikel .line{
+        height: 7px;
+    }
+}
+
+.artikel .url_to_details {
+    display: inline;
+}
+
+.artikel img{
+    width: 90%;
+    height: auto;
+    object-fit:cover;
+    margin: 15px auto ;
+    border-radius: 10px;
+    border: 3px solid black;
+    opacity: 1;
+    visibility: visible; /* Добавлено для управления видимостью */
+    transition: opacity 0.5s ease, visibility 0.5s ease; 
+}
+.artikel .invisible{
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    margin: 70% 0% 0% 3%;
+    
+}
+.article_theme,.article_author{
+    font-size: rem(16);
+    padding-right:15px;
+    text-align: right;
+    color:gold;
+    font-weight: 700;
+}
+.article_theme{
+    color:gold;
+}
+.article_author{
+    color:white
+}
+.article_theme{
+    opacity: 1;
+    font-weight: 600;
+}
+.article_face{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}

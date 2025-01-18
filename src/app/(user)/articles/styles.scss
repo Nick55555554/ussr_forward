@@ -1,0 +1,289 @@
+@import "@/app/layout.scss";
+
+.articles-page{
+    padding-top: 90px;
+    height: auto;
+    background-color: rgb(255, 255, 255);
+}
+.flex-articles{
+    display: flex;
+    padding-top: rem(50);
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: start;
+    gap:60px;
+    margin-left: 7%;
+    margin-bottom: 30px;
+    transform: translate(0,0);
+    transition:transform 0.5s ease;
+}
+.bold-label{
+    font-weight: 700;
+    padding: 20px 0 20px 100px;
+    box-sizing: border-box;
+    font-size: rem(84);
+    opacity: 1;
+    transition: all 0.5s ease;
+    color: #ffd700;
+}
+.small{
+    transform: translate(-50px, -30px) scale(0.5);
+    transition:transform 0.5s ease;
+    text-decoration: none;
+}
+.small-flex{
+    transform: translate(0,20px,) scale(0.9);
+    transition:transform 0.5s ease;
+}
+.bold-label::first-letter{
+    font-size: 80px;
+    font-weight: 800;
+    font-family: "Playfair Display", serif;
+}
+@media(max-width: 680){
+    .bold-label{
+        padding: 0 20px;
+    }
+}
+@media(max-width: 400){
+    .bold-label{
+        padding: 0;
+    }
+    
+}
+.inline{
+    display: inline-block;
+    text-decoration: underline;
+    text-shadow: 3px 2px 4px rgba(0, 0, 0, 0.5);
+}
+.article-face{
+    width: 100%;
+    height: 150px;
+    padding:20px 0 0 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 170px;
+}
+@media(max-width:600px){
+    .article-face{
+        gap:30px
+    }
+}
+@media(max-width:900px){
+    .article-face{
+        gap:100px
+    }
+}
+@media (max-width: 1200px){
+    .article-face{
+        gap:20px
+    }
+}
+@media (max-width: 1200px){
+    .inline{
+        display: block;
+    }
+}
+.skip{
+    width: 100%;
+    height: 150px;
+    background: white;
+}
+
+.layout{
+    display: none;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 9999;
+    background-color:rgb(0,0,0,0.5);
+}
+.filters{
+    position: fixed;
+    top:57%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    display: none;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: 
+    "date theme"
+    "calendar author_confirm";
+    row-gap: 20px;
+    column-gap: 30px;
+    padding: 10px;
+    border-radius: 10px;
+    width: 800px;
+    height:550px;
+    margin: auto;
+    z-index: 10000;
+    background-color: brown;
+}
+.filters-date,.filters-theme, .filters-calendar, .filters-author,filters-rating{
+    justify-items: start;
+    align-items: start;
+    border-radius: 5px;
+    font-size: rem(22);
+    background-color: white;
+    // border: 8px solid gold;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    overflow-y: auto;
+}
+.filters-date,.filters-theme,.filters-author,.filters-rating {
+    padding: 20px;
+}
+.filters-author-confirm{
+    grid-area: author_confirm;
+    justify-items: center;
+}
+.filters-calendar{
+    grid-area: calendar;
+}
+.filters-date{
+    grid-area: date;
+}
+.filters-theme{
+    grid-area: theme;
+}
+.filters-author{
+    width: 100%;
+    height: 70%;
+    background-color: white;
+    border: 8px solid gold;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+.filter-head{
+    color:brown;
+    background-color: rgba(250, 146, 136, 0.819);
+    width:auto;
+    min-width: 300px;
+    text-align: left;
+    height: auto;
+    border-radius: 5px;
+    margin: 0 auto 10px;
+    padding-left: 10px;
+}
+.filters-confirm{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // border:5px solid gold;
+    border-radius: 5px;
+    background-color: white;
+    font-weight: 600;
+    font-size: rem(28);
+    width: 250px;
+    height: 60px;
+    text-align: center;
+    margin-top: 15px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+.filters-confirm:hover {
+    background-color: rgb(250, 227, 96,0.8);
+    border: 1px solid black;
+    color:white;
+    font-weight: 600;
+}
+.react-calendar__month-view__days__day{
+    color:gold;
+    font-size: rem(24);
+    font-weight: 500;
+    line-height: 30px;
+}
+.react-calendar__month-view__weekdays__weekday{
+    padding-left: 13px;
+}
+.react-calendar{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.react-calendar__navigation__label{
+    color: rgb(0, 0, 0);
+    font-weight: 500;
+    background-color: burlywood;
+}
+
+.react-calendar__navigation__arrow {
+    padding: 0 5px;
+    background-color: burlywood;
+}
+.react-calendar__tile--active {
+    background-color: #007bff;
+    color: white;
+}
+.arrow{
+    display: inline;
+}
+.filters-date-li, .filters-theme-li, .filters-author-li, .filters-rating-li{
+    display: flex;
+    flex-direction: row;
+    gap:10px;
+}
+.filters-theme-li input,
+.filters-author-li input,
+.filters-rating-li input[type="checkbox"] {
+    display: none; 
+}
+.filters-theme-li input[type="checkbox"]:checked + .checked-btn::after,
+.filters-rating-li input[type="checkbox"]:checked + .checked-btn::after,
+.filters-author-li input[type="checkbox"]:checked + .checked-btn::after {
+    opacity: 1; 
+}
+.filters-date-li input,[type="radio"] {
+    display: none; 
+}
+.filters-date-li input[type="radio"]:checked + .radio-btn::after {
+    opacity: 1; 
+}
+.checked-btn{
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgb(255, 217, 0);
+    border-radius: 15%; 
+    margin-top: 5px;
+    position: relative;
+}
+.checked-btn::after {
+    content: '';
+    width: 16px;
+    height: 16px;
+    background: rgb(255, 217, 0);
+    border-radius: 5%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0; 
+    transition: opacity 0.2s;
+}
+.radio-btn {
+    width: 19px;
+    height: 19px;
+    border: 2px solid gold;
+    border-radius: 50%; 
+    margin-top: 3px;
+    position: relative;
+}
+
+
+.radio-btn::after {
+    content: '';
+    width: 12px;
+    height: 12px;
+    background: gold;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0; 
+    transition: opacity 0.2s;
+}
+
