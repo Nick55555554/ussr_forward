@@ -1,7 +1,7 @@
 import dotenv from 'dotenv';
 import express from 'express';
 import cors from 'cors';
-import router from './routes/index.js';
+import router from './routes/articles.js';
 import pinnedRouter from './routes/pinnedArticles.js'
 import rateRouter from './routes/rateArticle.js'
 import periodsRouter from "./routes/periods.js"
@@ -17,7 +17,7 @@ app.use(cors({
 }));
 app.options('*', cors());
 
-app.use(express.json());
+app.use(express.json()); 
 
 app.use((req, res, next) => {
     res.setHeader("Content-Security-Policy", "default-src 'none'; img-src 'self' https://disk.yandex.ru; style-src 'self' blob;");
@@ -37,9 +37,7 @@ app.use((req, res, next) => {
 
     next();
 });
-
 app.use("/api/articles", router);
-app.use("/api/articles/:id", router);
 
 app.use('/api/pinArticle',pinnedRouter)
 

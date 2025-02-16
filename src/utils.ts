@@ -1,7 +1,10 @@
 import { atom } from "jotai";
+import { atomWithStorage} from 'jotai/utils';
+
 
 export const url = "http://localhost:3001" 
 
+export const token = 'CBJYJH8-XEF4JHA-KSQC8J4-KBYT11P'
 
 export const searchTextAtom = atom('');
 
@@ -30,10 +33,30 @@ export interface PeriodsProps{
     name: string;
     start_date: string;
     end_date:string;
-    title_image: {
-        type: string;
-        data: number[];
-    }
+    title_image: string;
+}
+
+export interface BooksProps{
+    id: number;
+    title_image: string,
+    title: string,
+    author: string,
+    period_id:number
+}
+
+export interface PersonalitiesProps{
+    id: number;
+    title_image: string,
+    name: string,
+    period_id:number
+}
+
+export interface FilmsProps{
+    id: number;
+    title_image: string,
+    name: string,
+    director: string,
+    period_id:number
 }
 
 export const getArticles = async () => {
@@ -50,8 +73,7 @@ export const getArticles = async () => {
         throw error;
     }
 };
-export const handleRating = async () => {
-            
+export const handleRating = async () => {  
     try {
         const responseArticles = await 
             fetch(`${url}/api/rateArticle/getAll`);
@@ -62,7 +84,32 @@ export const handleRating = async () => {
         }
 
         return await responseArticles.json();
-    } catch (err) {
-
+    } catch (error) {
+        console.error("Ошибка при получении постов:", error);
+        throw error;
     } 
+};
+
+export const sectionFetch = async (section:string, id:string | string[]) => {
+    try {
+        const response = await 
+            fetch(`${url}/api/periods/${id}/${section}`, {cache:"no-cache",});
+
+        if (!response.ok) {
+            const errorMessage = await response.text(); 
+            throw new Error(`Ошибка сети: ${errorMessage}`);
+        }
+        const data = await response.json();
+        return data
+    } catch (error) {
+        console.error("Ошибка при получении постов:", error);
+        throw error;
+    } 
+}
+export const periodsAtom = atomWithStorage<PeriodsProps[]>('acticleTheme',[]);
+
+export const getPeriods = async () => {
+    const result = await fetch(`${url}/api/periods/`);
+    const body = await result.json()
+    return body
 };

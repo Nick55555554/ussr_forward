@@ -1,6 +1,6 @@
 import { getServerSession } from "next-auth";
 import SessionProvider from "../components/SessionComponent"
-import "@/app/layout.scss";
+import "../layout.scss";
 export default async function AuthLayout({
     children,
 }: {

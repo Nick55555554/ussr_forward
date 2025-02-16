@@ -1,0 +1,98 @@
+@use  "../../layout.scss" as *;
+.adminPage{
+    padding: 100px 0 100px 0;
+}
+.gridSector{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    gap:30px;
+}
+.center{
+    position: relative;
+    margin: 10px auto;
+    text-align: center;
+    width: 50%;
+}
+
+.flexSector{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: start;
+    gap: 30px;
+    margin: 20px 0 0 0;
+}
+.addB{
+    text-align: center;
+    background-color: brown;
+    color:white;
+    border-radius: 15px;
+    width: 100%;
+    font-size: clamp(rem(16), 1rem + 1vw, rem(28));
+    padding: 10px;
+    height: 60px;
+    margin: 30px 0 0 0;
+}
+.grid_ch{
+    align-self: start;
+    justify-self: center;
+}
+
+.formDiv{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start; gap:5px;  
+}
+.idForm{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap:10px
+}
+.formLabel{
+    display: inline;
+    font-size: rem(28);
+    padding: 10px 0 0 0;
+}
+.formArea, .formInput{
+    border-radius: 10px;
+    display: inline-block;
+    border: 3px solid black;
+    box-shadow: 2px 3px 2px rgba(0,0,0,0.3);
+}
+.formArea{
+    width: 100%;
+    height: 80px;
+    font-size: clamp(0.8rem, 1rem + 1vw, 1.2rem);
+    padding-left: 10px;
+    resize: none;
+}
+.formButton{
+    cursor: pointer;
+}
+.formInput{
+    font-size: clamp(1rem, 1rem + 1vw, 1.3rem);
+    padding-left: 10px;
+    width: 78%;
+    height: 40px;
+}
+.formError{
+    color: red;
+    font-size: rem(20);
+}
+.accept{
+    cursor: pointer;
+    font-size: rem(28);
+    text-align: center;
+    margin: 30px 0 0 0;
+    border-radius: 15px;
+    background-color: brown;
+    width: 70%;
+    box-shadow: 4px 4px 5px rgba(0,0,0,0.3);
+}
+.w15{
+    width: 25%;
+}

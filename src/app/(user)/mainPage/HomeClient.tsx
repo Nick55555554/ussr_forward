@@ -6,20 +6,28 @@ import statistic2 from "@/img/statistic-img-2.jpg"
 import statistic3 from "@/img/statistic-img-3.jpg"
 import AutoSwipper from "@/app/UI/autoswiper/Autoswiper"
 import { AnimatedBox } from "@/app/UI/animatedBox/AnimatedBox"
-import parallax_1 from "@/img/parallax_1.jpg"
 import { useEffect, useRef, useState } from "react"
 import Swiper1 from "@/app/UI/swiper/Swiper"
 import { Article } from "@/app/UI/article/Article"
-import { ArticlesProps, RatingProps } from "@/utils"
+import { ArticlesProps, PeriodsProps } from "@/utils"
 
 export default function HomeClientComponent({
-  articles, rating
+  articles, periods
 }:{
-  articles:ArticlesProps[], rating: RatingProps[]
+  articles:ArticlesProps[], periods:PeriodsProps[]
 }){
     const [isEffectActive, setIsEffectActive] = useState(false);
     const scrollPositionRef = useRef(0);
     const tickingRef = useRef(false); 
+    const [text, setText] = useState<boolean>(false)
+
+    useEffect(() => {
+    const timer = setTimeout(() => {
+        setText(true)        
+    }, 1000); 
+    
+    return () => clearTimeout(timer);
+}, [])
     
     const handleScroll = () => {
         scrollPositionRef.current = window.scrollY || document.documentElement.scrollTop;
@@ -28,9 +36,9 @@ export default function HomeClientComponent({
           window.requestAnimationFrame(() => {
           
               setIsEffectActive(prevIsEffectActive => {
-                  if (scrollPositionRef.current > 2000 && !prevIsEffectActive) {
+                  if (scrollPositionRef.current > 1600 && !prevIsEffectActive) {
                       return true;
-                  } else if (scrollPositionRef.current <= 2000 && prevIsEffectActive) {
+                  } else if (scrollPositionRef.current <= 1600 && prevIsEffectActive) {
                       return false;
                   }
                   return prevIsEffectActive; 
@@ -42,61 +50,52 @@ export default function HomeClientComponent({
     };
 
     useEffect(() => {
-    
-        window.addEventListener('scroll', handleScroll);
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, []);
 
+      window.addEventListener('scroll', handleScroll);
+      
+      return () => {
+          window.removeEventListener('scroll', handleScroll);
+      };
+  }, []);
 
 
     return (
     <div className={`main-frame ${isEffectActive ? "nextColor" : "firstColor"}`}>
         <div className="title-div">
-        {/* <div className="quote">
-          <p>Читайте,<br/>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;завидуйте,<br/>
-                &nbsp;&nbsp;&nbsp;&nbsp;я
-                гражданин<br/>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Советского Союза».<br/>
-                &nbsp;&nbsp;&nbsp;&nbsp;Владимир Маяковский</p>
-          </div> */}
+        <div className={`VSS ${text ? "ani-b" : ""}`}>Великий Советский Союз,</div>
+        <div className={`FORWARD ${text ? "ani-r" : ""}`}>ВПЁРЕД!</div>
             <img
+            
             className="title-img"
             alt="Советский союз"
-            src={title.src}/>
+            src={title.src}
+            
+            />
         </div>
         <div className="split-line"></div>
-        <h1 className="bold-label">Великий Советский Союз</h1>
 
       <Swiper1 children={<img alt="Цифры"/>}/>
 
       <div className="flex-statistic">
 
         <AnimatedBox>
+        <div className="vignette">
           <img src = {statistic1.src} className="back-img" alt="Показатели"/>
-          <h3 className="statistic-text1">Написано книг:</h3>
-          <h3 className="statistic-text2">Написано статей:</h3>
+          <h4 className="statistic-text1">Построено 10000 новых промышленных предприятий!</h4>
+          <h4 className="statistic-text2">Было достигнуто первенство в производстве электроэнергии</h4>
+          </div>
         </AnimatedBox>
 
         <AnimatedBox>
           <div className="vignette">
-            <img src = {statistic2.src} className="back-img"  alt="Показатели"/>
-            <h4 className="statistic-text1">Было обучено грамоте:</h4>
-            <h4 className="statistic-text2">Было обучено русскому языку:</h4>
+            <img src = {statistic2.src} className="back-img"  alt="Показатели" />
+            <h4 className="statistic-text1">Количество образованных людей выросло на 50%</h4>
+            <h4 className="statistic-text2">Было построено более 30000 километров железных дорог!</h4>
           </div>
-      
-
         </AnimatedBox>
         
         </div>
-        <AnimatedBox big={true}>
         
-        <img src={statistic3.src} className="back-img"  alt="Показатели"/>
-        <h1 className="statistic-text1">Было обучено русскому языку:</h1>
-
-        </AnimatedBox>
         <div 
         className="flex-articles">
             {articles.map(article => (
@@ -111,8 +110,7 @@ export default function HomeClientComponent({
               </AnimatedBox>
             ))}
         </div>
-        <AutoSwipper/>
-        <img src={parallax_1.src} className="parallax-img" alt="параллакс"/>
+        <AutoSwipper periods={periods}/>
     </div>
   );
 }

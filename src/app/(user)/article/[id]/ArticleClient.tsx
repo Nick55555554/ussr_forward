@@ -57,6 +57,7 @@ export default function ArtilceClient() {
 
         handleFetch(session?.user?.email);
     }, [id]);
+    
     useEffect(() => {
         if(rate && pin){
             setSelectedStar(rate-1);

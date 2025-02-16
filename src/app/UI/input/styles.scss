@@ -1,12 +1,13 @@
 @import "../../layout.scss";
 
+
 .input{
     display: flex;
     flex-direction: row;
     align-items: center;
     background-color: brown;
     border-radius: 10px;
-    width: 50%;
+    width: 55%;
     height: 60px;
     border: 1px solid black;
     font-size: rem(26);
@@ -20,6 +21,26 @@
         transform: (scale(1.15) translate(-180px,20px));
         box-shadow: 10px 15px 7px rgba(0, 0, 0, 0.5);
     }
+}
+@media(max-width: 1028px){
+    .input{
+        width: 80%
+    }
+    .input-button{
+        margin-right: 10px;
+    }
+    .input {
+        &.focused {
+            transform: none;
+            box-shadow: none;
+        }
+    }
+}
+@media(max-width:1200px){
+    .input-button{
+        margin-right: 5px;
+    }
+
 }
 .icon-input{
     display: inline;

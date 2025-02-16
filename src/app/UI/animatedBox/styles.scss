@@ -1,13 +1,15 @@
 .box, .bigBox, .tallBox{
     text-align: left;
     opacity: 0; 
-    transition: opacity 0.5s ease; 
+    transition: opacity 0.5s ease,transform 0.3s ease; 
     border-radius: 15px;
-    padding:10px 0;
-    transition: transform 0.3s ease, opacity 0.2s ease;
+    margin:10px;
 }
 .box{
     width: 510px; 
+}
+.box:hover{
+    transform: scale(1.03);
 }
 .bigBox{
     width: 80%;
@@ -19,6 +21,7 @@
     width: 400px;
     height: 550px;
     overflow: hidden;
+    box-shadow: 5px 3px 4px rgba(0, 0, 0, 0.5);
 }
 @media(max-width: 680px){
     .box{
@@ -29,16 +32,14 @@
 @media(max-width: 450px){
     .box{
         width: 310px;
-        height: 310px;
+        height: 250px;
     }
-}
-
-@media(max-width: 450px){
     .bigBox{
         width: 310px;
         height: auto;
     }
 }
+
 @media(max-width: 480px){
     .tallBox{
         width: 310px;
@@ -49,9 +50,10 @@
 .box.visible, .bigBox.visible, .tallBox.visible  {
     animation: multiPhaseAnimation 1.5s ease-out forwards; 
     opacity: 1;
+
 }
-.box.visible:hover{
-    transform: scale(1.05);
+.c.visible:hover{
+    transform: scale(1.1);
     transition: transform 0.2s ease;
     cursor: pointer;
 }

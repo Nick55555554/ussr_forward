@@ -22,10 +22,11 @@ const reducer = (state: State, action: Action) => {
 interface AnimatedBoxProps{
     children: ReactNode;
     big?: boolean;
-    tall?: boolean
+    tall?: boolean;
+    className?: string
 }
 
-export const AnimatedBox: React.FC<AnimatedBoxProps> = ({children, big, tall}) => {
+export const AnimatedBox: React.FC<AnimatedBoxProps> = ({children, big, tall,className}) => {
     const boxRef = useRef<HTMLDivElement | null>(null);
     const [state, dispatch] = useReducer(reducer, initialState);
     
@@ -52,7 +53,8 @@ export const AnimatedBox: React.FC<AnimatedBoxProps> = ({children, big, tall}) =
 
     return (
         <div className={
-            `${state.isVisible ? 'visible' : '' }
+            `${className}
+            ${state.isVisible ? 'visible' : '' }
             ${big && !tall ? "bigBox" :""}
             ${tall && !big ? "tallBox" :""}
             ${!big && !tall ? "box" : ''}`}

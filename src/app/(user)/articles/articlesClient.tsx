@@ -8,24 +8,30 @@ import { useAtom } from "jotai";
 import { searchTextAtom } from "@/utils";
 import { useEffect, useRef, useState,useReducer} from "react";
 import { reducer, initialState } from "./FilterReducer";
+import {useSearchParams } from "next/navigation";
+import { RouterComponent } from "@/app/components/routerComponent";
 
 export function ArticlesClientComponent({
-    articles, rating
+    articles: initialArticles,
+    rating
 }:{
     articles:ArticlesProps[], rating: RatingProps[]
 }){
+    const [articles, setArticles] = useState<ArticlesProps[]>(initialArticles)
     const [filtred, setFilter] = useState<ArticlesProps[]>([]);
     const [searchText] = useAtom(searchTextAtom);
     const [isInputFocused, setIsInputFocused] = useState(false);
     const [authors, setAuthors] = useState<string[]>([]);
-    const [themes, setThemes] = useState<string[]>([]);    
     const [state, dispatch] = useReducer(reducer, initialState);
     const filtersRef = useRef<HTMLDivElement | null>(null);
     const layoutRef = useRef<HTMLDivElement | null>(null);
     const [selecteDateInterval, setSelecteDateInterval] = useState<string>("allTime");
+    const searchParams = useSearchParams()
+    const initialTheme = searchParams.get('theme')
+    const [themes, setThemes] = useState<string[]>([]);    
     const [rateCount, setRateCount] = useState<number[]>([0,0,0,0,0]);
     const [articlesCount, setArticlesCount] = useState<number>(0);
-    const newMidRating = Array.from({ length: 10 }, () => []);
+    const newMidRating = Array.from({ length: 1000 }, () => []);
     const [midRating, setMidRating] = useState<number[][]>(newMidRating);
 
     useEffect(() => {
@@ -42,13 +48,15 @@ export function ArticlesClientComponent({
         }
     },[articles])
 
-
-
-
-
-
-
-
+    useEffect(() => {
+        if (initialTheme){   
+            dispatch({ type: 'SET_THEMES', payload: [initialTheme] });
+        }
+    },[initialTheme])
+    
+    useEffect(() => {
+        confirmFiltersHandler()
+    },[themes])
     //Фильтры
 
     const onClickFilters = () => {
@@ -67,7 +75,7 @@ export function ArticlesClientComponent({
     const handleFocusChange = (isFocused: boolean) => {
         setIsInputFocused(isFocused); 
     };
-
+    
 
     useEffect(()=>{
         
@@ -97,9 +105,9 @@ export function ArticlesClientComponent({
     };
 
     const handleRatingChange = (rate: number) => {
-        const newRates = state.filters.rating.includes(rate)
-            ? state.filters.rating.filter(r => r !== rate)
-            : [...state.filters.rating, rate];
+        const newRates = state.filters.rate.includes(rate)
+            ? state.filters.rate.filter(r => r !== rate)
+            : [...state.filters.rate, rate];
 
             dispatch({ type: 'SET_RATING', payload: newRates});
     };
@@ -108,45 +116,36 @@ export function ArticlesClientComponent({
         setSelecteDateInterval(event.target.value);
     };
     const confirmFiltersHandler = () => {
-        let newFiltredArticles = articles.filter(one => 
-            state.filters.authors.some(author => one.author === (author)) 
-            && state.filters.themes.some(theme => one.theme === (theme)))
-
-            
-            if (state.filters.themes.length === 0 && state.filters.authors.length !== 0){
-                newFiltredArticles = articles.filter(one => 
-                    state.filters.authors.some(a => one.author === (a)))
-                    
-                }else if (state.filters.authors.length === 0 && state.filters.themes.length !== 0){
-                    
-                    newFiltredArticles = articles.filter(one => 
-                        state.filters.themes.some(t => one.theme === (t)))
-                    } else if (state.filters.authors.length === 0 && state.filters.themes.length === 0){
-                        newFiltredArticles = articles
-                    }
-            if (selecteDateInterval === 'week') {
+        let newFiltredArticles = articles
+        if (state.filters.authors && state.filters.authors.length > 0){
+            newFiltredArticles = newFiltredArticles.filter(one => 
+                state.filters.authors.some(author => one.author === (author)))
+        }
+        if (state.filters.rate && state.filters.rate.length > 0){
+            newFiltredArticles = newFiltredArticles.filter((one) => 
+                state.filters.rate.some(rate => one.rate === (rate))
+        )
+        }
+        if (state.filters.themes && state.filters.themes.length > 0){
+            newFiltredArticles = newFiltredArticles.filter(one => 
+                state.filters.themes.some(theme => one.theme === (theme)))
+        }
+        if (selecteDateInterval === 'week') {
                 const oneWeekAgo = Date.now() - 604800000;
-                newFiltredArticles.forEach(o => {
-                    console.log(o?.date)
-                }); 
-                console.log(newFiltredArticles)
                 newFiltredArticles = newFiltredArticles.filter(one => 
                     one.date !== undefined && new Date(one.date).getTime() >= oneWeekAgo 
                 );
             } else if(selecteDateInterval === 'month'){
-                console.log('month')
                 const oneMonthAgo = Date.now() - 2678400000;
                 newFiltredArticles = newFiltredArticles.filter(one => 
                     one.date !== undefined && new Date(one.date).getTime() >= oneMonthAgo 
                 );
             } else if(selecteDateInterval === 'year'){
-                console.log('year')
                 const oneYearAgo = Date.now() - 31536000000;
                 newFiltredArticles = newFiltredArticles.filter(one => 
                     one.date !== undefined && new Date(one.date).getTime()  >= oneYearAgo 
                 );
             }
-        console.log(newFiltredArticles)
         setFilter(newFiltredArticles)
         
         if (filtersRef.current && layoutRef.current) {
@@ -156,7 +155,6 @@ export function ArticlesClientComponent({
     };
     
 
-
     useEffect(() => {
         if(articles){
             articles.forEach(article => {
@@ -164,7 +162,6 @@ export function ArticlesClientComponent({
                     const date = new Date(article.created_at);
                     const millisecondsSinceEpoch = date.getTime()
                     article.date = millisecondsSinceEpoch
-                    console.log(millisecondsSinceEpoch)
                 }
             });
         }
@@ -183,6 +180,7 @@ export function ArticlesClientComponent({
     
             setMidRating(newMidRating);
         }
+
     }, [rating]);
 
     useEffect(() => {
@@ -204,14 +202,32 @@ export function ArticlesClientComponent({
             });
     
             setRateCount(newRateCount); 
+            
         }
-    }, [midRating]);
     
+    }, [midRating]);
+
+
+    useEffect(() => {
+        const ratedArticles = [...articles]
+        ratedArticles.forEach(article => {
+            if (midRating[article.id].length > 0) { 
+                const summa = midRating[article.id].reduce((accumulator, currentValue) =>
+                    accumulator + currentValue, 0);
+                if (summa) {
+                    const rate = Math.round(summa / midRating[article.id].length);
+                    article.rate = rate
+                }
+            
+            }
+        });
+        setArticles(ratedArticles)
+    },[rateCount])
 
 
     return(
         <div className="articles-page">
-            
+            <RouterComponent>
             <div className="article-face">
             <h1 className={`bold-label  ${isInputFocused ? "small" : "inline"}`}>
                     Статьи
@@ -243,7 +259,9 @@ export function ArticlesClientComponent({
                             onChange={handleDateChange}
                             />
                             <span className="radio-btn"></span>
-                            <label htmlFor="month" className="cursor-pointer">За последний месяц</label>
+                            <label htmlFor="month" className="cursor-pointer">
+                                За последний месяц
+                            </label>
                         </li>
                         
                         <li className="filters-date-li">
@@ -252,7 +270,9 @@ export function ArticlesClientComponent({
                             onChange={handleDateChange}
                             />
                             <span className="radio-btn"></span>
-                            <label htmlFor="year" className="cursor-pointer">За последний год</label>
+                            <label htmlFor="year" className="cursor-pointer">
+                                За последний год
+                            </label>
                         </li>
                         <li className="filters-date-li">
                             <input type="radio" value="allTime" id="allTime" name="options"
@@ -260,7 +280,9 @@ export function ArticlesClientComponent({
                             onChange={handleDateChange}
                             />
                             <span className="radio-btn"></span>
-                            <label htmlFor="allTime" className="cursor-pointer">За всё время</label>
+                            <label htmlFor="allTime" className="cursor-pointer">
+                                За всё время
+                            </label>
                         </li>
                     </ul>
                 </div>
@@ -269,13 +291,15 @@ export function ArticlesClientComponent({
                         <h5 className="filter-head">Темы</h5>
                         <fieldset>
                         {themes?.map((one,index) => (
-                                <li className="filters-theme-li" key={index}>
+                                <li className="filters-theme-li" 
+                                onClick={() => handleThemeChange(one)}
+                                key={index}>
                                     <input  id={one} type="checkbox" 
                                     checked={state.filters.themes.includes(one)} 
                                     onChange={() => handleThemeChange(one)}
                                     />
-                                    <span className="checked-btn" ></span>
-                                    <label htmlFor={one}
+                                    <span className="checked-btn cursor-pointer" ></span>
+                                    <label
                                     className="cursor-pointer"
                                     >{one}</label>
                                 </li>
@@ -289,15 +313,19 @@ export function ArticlesClientComponent({
                         <h5 className="filter-head">Оценки</h5>
                         <fieldset>
                         {[1,2,3,4,5]?.map((one) => (
-                                <li className="filters-rating-li" key={one}>
+                                <li className="filters-rating-li mt-[2px]" key={one}
+                                onClick={() => handleRatingChange(one)}
+                                >
                                     <input  id={one.toString()} type="checkbox" 
-                                    checked={state.filters.rating.includes(one)} 
+                                    checked={state.filters.rate.includes(one)} 
                                     onChange={() => handleRatingChange(one)}
                                     />
-                                    <span className="checked-btn" ></span>
-                                    <label htmlFor={one.toString()} 
+                                    <span className="checked-btn cursor-pointer"></span>
+                                    <label 
                                     className="w-1/9 cursor-pointer">{one}</label>
-                                    <div className="ml-1 text-base leading-loose  ">  ({rateCount[one - 1] ? rateCount[one - 1] : 0})</div>
+                                    <div className="ml-1 text-base leading-loose "
+                                    >  ({rateCount[one - 1] ? rateCount[one - 1] : 0})
+                                    </div>
                                 </li>
                                 ))
                             }
@@ -310,12 +338,14 @@ export function ArticlesClientComponent({
                             <h5 className="filter-head">Авторы</h5>
                             <fieldset>
                             {authors?.map((one,index) => (
-                                <li className="filters-author-li" key={index}>
+                                <li className="filters-author-li"
+                                onClick={() => handleAuthorChange(one)}
+                                key={index}>
                                     <input  id={one} type="checkbox" 
                                     checked={state.filters.authors.includes(one)} 
                                     onChange={() => handleAuthorChange(one)}/>
                                     <span className="checked-btn"></span>
-                                    <label htmlFor={one}
+                                    <label
                                     className="cursor-pointer"
                                     >{one}</label>
                                 </li>
@@ -345,6 +375,7 @@ export function ArticlesClientComponent({
                 :
                 <h1 className="bold-label">Упс.. Ничего не найдено</h1>}
                 </div>
+            </RouterComponent>
         </div>
     )
 }

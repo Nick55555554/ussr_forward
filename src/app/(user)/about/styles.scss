@@ -1,6 +1,89 @@
-.about{
-    background-color: crimson;
+@use "../../layout.scss" as *;
+.about_page{
+    background-color: rgb(255, 255, 255);
     width: 100%;
-    height: 100%;
+    height: auto;
     padding-top: 100px;
+
+}
+.about{
+    align-self: center;
+    justify-self: center;
+    font-size: rem(72);
+    color:brown;
+    grid-area: about;
+}
+.line{
+    height: 1;
+    width: 98%;
+    margin-bottom: 50px;
+    padding: 0 auto;
+    background-color: black;
+    content: "";
+}
+.text_grid{
+    display: grid;
+    grid-template-rows: auto 1fr;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: 
+    "about about"
+    "text1 text2 ";
+    height: 100vh;
+    width: 100%;
+    align-items: center;
+    justify-items: center; 
+    margin-top: 5vh;
+    overflow: hidden;
+}
+.text{
+    text-align: left;
+    opacity: 0;
+}
+.text1{
+    grid-area: text1;
+    font-weight: 600;
+    font-size: clamp(rem(18), 1vw + 1rem, rem(48));
+    transform: translateY(700px);
+    transition: transform 0.5s ease,
+    opacity 0.3s ease;
+    padding: 10% 15% 15% 15%;
+}
+.text2{
+    grid-area: text2;
+    font-size: clamp(rem(16), 0.8vw + 1rem, rem(44));
+    font-weight: 500;
+    transform: translateX(500px);
+    transition: transform 0.5s ease 0.2s,
+    opacity 0.3s ease 0.2s;
+    padding: 0% 10% 15% 10%;
+}
+@media(max-width:500px){
+    .about_page{
+        padding-top: 50px;
+    }
+    .about{
+        font-size: clamp(rem(40), 2vw + 3rem, rem(64));
+        padding-bottom: 30px;
+    }
+    .text{
+        font-size: clamp(rem(16), 0.2vw + 1rem, rem(44));
+        padding: 0px 50px;
+    }
+    .text_grid{
+        grid-template-areas: 
+        "about about"
+        "text1 text1 "
+        "text2 text2 ";
+        grid-template-rows: 20% 35% 30%;
+        grid-template-columns: 1fr;
+        row-gap: 0;
+    }
+}
+.text1.visible{
+    opacity: 1;
+    transform: translateY(0px);
+}
+.text2.visible{
+    opacity: 1;
+    transform: translateX(0px);
 }

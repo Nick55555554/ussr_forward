@@ -5,6 +5,7 @@
     height: 100px;
     margin: 20px 0 0 0;
     background-color: white;
+    font-size: clamp(1rem, 2vw + 1rem, 3rem);
 }
 
 .swiper-slide {
@@ -12,6 +13,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
 .inAutoSwiper{
     height: 100%;
@@ -19,7 +21,9 @@
     text-align: center;
     line-height: 100px;
 }
-.parallax-img{
-    width:100%;
-    height: auto;
+.k{
+    text-wrap: wrap;
+    padding: 5px 0 0 0;
+    font-size: 1.8rem;
+    text-align: center;
 }

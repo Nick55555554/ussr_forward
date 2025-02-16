@@ -3,6 +3,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 *,
 *::before,
 *::after{
@@ -15,11 +16,20 @@
 :where(ul[class]){
   list-style: none;
 }
-@font-face {
-  font-family:'GeistMonoVF';
-  src: url("./fonts/GeistMonoVF.woff") format(".woff");
+font-face {
+  font-family: "DXOldStandardStudium";
+  src: url("./fonts/OldStandardRegular.otf") format("truetype"),
+        url("./fonts/OldStandardRegular.otf") format("opentype");
   font-weight: 400;
-  font-style:normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "DXOldStandardStudium";
+  src: url("./fonts/OldStandardTtItalic.ttf") format("truetype"),
+        url("./fonts/OldStandardItalic.otf") format("opentype");
+  font-weight: 400;
+  font-style: italic;
 }
 
 img{
@@ -38,7 +48,8 @@ html{
   scroll-behavior: smooth;
 }
 body{
-  font-family: "GeistMonoVF", sans-serif;
+  font-family: "DXOldStandardStudium", sans-serif;
+  overflow-x: hidden;
   min-height: 100%;
   line-height: 1.5;
 }
@@ -149,27 +160,88 @@ h2 {
     padding: 0 20px;
     border: none;
 }
+.mini-nav{
+  display: block;
+  position: fixed;
+  width: 100px;
+  height: 90px;
+  z-index: 100000;
+  margin-left: 5px;
+}
+.smallNav{
+  display: flex;
+  position: fixed;
+  top: 110px;
+  left: 5px;
+  flex-direction: column;
+  gap:10px;
+  justify-content: start;
+  align-items: start;
+  width: 20%;
+  height: 60%;
+  z-index: 1000000;
+  background-color: white;
+  width: 250px;
+  height: 300px;
+  border-radius: 15px;
+}
 .sickle-img{
     width: auto;
-    height: 90px;
+    object-fit: cover;
+    height: 100px;
     cursor: pointer;
 }
-@media(max-width: 400){
-    .sickle-img{
-        display: none;
-    }
-}
-.link{
-    padding: 0 50px;
-    font-size: rem(32);
-    font-weight: 600;
-}
+
 .nav{
     width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
+}
+.link{
+  font-size: rem(32);
+  font-weight: 600;
+  text-align: left;
+  padding: 5px 0 0 10px;
+}
+@media(max-width:1024px){
+
+  .link{
+    font-size: rem(28);
+    text-align: left;
+    padding: 5px 0 0 10px;
+  }
+  .user{
+    margin-left: 15px;
+  }
+
+}
+
+@media(max-width:768px){
+  .link{
+    font-size: clamp(1rem, 1vw + 1rem, 2rem);
+    padding: 0 25px;
+  } 
+  .mySwiper{
+      height: 400px;
+  }
+  .smallNav{
+    width: 220px;
+    height: 250px;
+  }
+}
+@media(max-width:600px){
+  .up600{
+    display: none;
+  }  
+  .static-head{
+    height: 60px;
+  }
+  .smallNav{
+    width: 210px;
+    height: 230px;
+  }
 }
 .ul{
     width: 40%;

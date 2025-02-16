@@ -4,18 +4,18 @@ import GoogleProvider from "next-auth/providers/google";
 
 export const authOptions = {
     providers: [
-    GitHubProvider({
-        clientId: process.env.GITHUB_ID as string,
-        clientSecret: process.env.GITHUB_SECRET as string,
-        }),
+    // GitHubProvider({
+    //     clientId: process.env.GITHUB_ID as string,
+    //     clientSecret: process.env.GITHUB_SECRET as string,
+    //     }),
     GoogleProvider({
         clientId: process.env.GOOGLE_CLIENT_ID as string,
         clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
         authorization: {
             params: {
-              prompt: "consent", // Запрашивает согласие пользователя каждый раз
-              access_type: "offline", // Запрашивает Refresh Token
-              response_type: "code" // Указывает, что вы хотите получить код авторизации
+                prompt: "consent", 
+                access_type: "offline",
+                response_type: "code"
                 }
             }  
         })

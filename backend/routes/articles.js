@@ -1,7 +1,6 @@
 import express from 'express';
 import client from "../database/index.js";
 
-
 const router = express.Router();
 
 router.get('/',async(req,res) => {
@@ -13,10 +12,29 @@ router.get('/',async(req,res) => {
         res.status(500).json({ error: 'Internal Server Error' });
     }
 });
+router.post('/send', async(req,res) => {
+    console.log('Полученные данные:', req.body);
+    try {
+        
+        const { author, theme, content, title, image} = req.body;
+
+        const result = await client.query(
+            'INSERT INTO articles (author, theme, content, title, image) VALUES ($1, $2, $3, $4, $5) RETURNING *',
+            [author, theme, content, title, image]
+        );
+        if (result.rows.length === 0) {
+            return res.status(404).json({ error: 'Не удалось создать статью' });
+        }
+        
+        res.json(result.rows);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
 router.post('/:id', async (req, res) => {
     const { id } = req.params;
     const {user_email} = req.body;
-    console.log(id, user_email)
     try {
         const articleQuery = await client.query('SELECT * FROM articles WHERE id = $1', [id]); 
         const itsPinned = await client.query('SELECT * FROM pinnedArticles WHERE article_id = $1 AND user_email=$2', [id, user_email]);

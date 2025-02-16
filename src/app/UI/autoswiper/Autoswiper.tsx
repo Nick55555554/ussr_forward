@@ -1,19 +1,31 @@
 "use client" 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/grid';
 import "./styles.scss"
 import 'swiper/css/pagination';
 import { Autoplay } from 'swiper/modules';
+import { PeriodsProps } from '@/utils';
+import { useRouter } from 'next/navigation';
 
-export default function App() {
+export default function Autoswipper(
+{periods}
+:
+{periods:PeriodsProps[]}
+) {
+    const router  = useRouter()
+    const periodHanlder = (id:number) => {
+        if (id) {
+            router.push(`/selfEducation/period/${id}`)
+        }
+    }
+    useEffect(() => console.log(periods),[periods])
     
     return (
         <>
-        <Swiper
+            <Swiper
                 spaceBetween={0}
-                modules={[Autoplay]}
                 autoplay={{
                     delay: 1000,
                     disableOnInteraction: false, 
@@ -32,52 +44,18 @@ export default function App() {
             className="myAutoSwiper"
             speed={500}
             loop={true}
-        >
-            <SwiperSlide>
-                <div className='inAutoSwiper'>
-                    132424
-                </div>
+                modules={[Autoplay]}
+            >
+            {periods &&
+            periods.map((period) => (
+            <SwiperSlide 
+            onClick={() => periodHanlder(period.id)}
+            className='k'
+            key={period.id}>
+            {period.name}
             </SwiperSlide>
-            <SwiperSlide>
-                <div className='inAutoSwiper'>
-                    132424
-                </div>
-            </SwiperSlide>
-            <SwiperSlide>
-                <div className='inAutoSwiper'>
-                    132424
-                </div>
-            </SwiperSlide>
-            <SwiperSlide>
-                <div className='inAutoSwiper'>
-                    132424
-                </div>
-            </SwiperSlide>
-            <SwiperSlide>
-                <div className='inAutoSwiper'>
-                    132424
-                </div>
-            </SwiperSlide>
-            <SwiperSlide>
-                <div className='inAutoSwiper'>
-                    132424
-                </div>
-            </SwiperSlide>
-            <SwiperSlide>
-                <div className='inAutoSwiper'>
-                    132424
-                </div>
-            </SwiperSlide>
-            <SwiperSlide>
-                <div className='inAutoSwiper'>
-                    132424
-                </div>
-            </SwiperSlide>
-            <SwiperSlide>
-                <div className='inAutoSwiper'>
-                    132424
-                </div>
-            </SwiperSlide>
+        ))}
+            
         </Swiper>
         </>
     );

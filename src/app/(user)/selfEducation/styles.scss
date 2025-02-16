@@ -1,34 +1,61 @@
 @use  "../../layout.scss" as *;
 .education-page{
     padding-top: 100px;
+    position: relative;
 }
-.period-card{
-    width: 100%;
-    height: 100%;
+.period-div{
     border-radius: 10%;
 }
-.bold-label{
+.bold-labelEdu{
+    position: absolute;
     font-weight: 700;
-    padding: 20px 0 0 100px;
+    transform: translate(-900px,-290px);
+    top: 290px;
+    left: 5%;
     box-sizing: border-box;
-    font-size: rem(84);
-    opacity: 1;
-    transition: all 0.5s ease;
-    text-decoration: underline;
-    
+    font-size: clamp(2rem, 2rem + 10vw, 5rem);
+    animation: leftOpen 0.5s 0.5s forwards;
+    z-index: 1;
+}
+
+@keyframes leftOpen {
+    to {
+        transform: translate(100px,-200px); 
+    }
 }
 .periods{
     display: flex;
     position: relative;
     flex-direction: row;
     gap: 10px;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
+    overflow:visible;
     height: auto;
     width: 100%;
     padding: 0 0 20px 0;
+    margin-top: 100px;
+    opacity: 0;
+    animation: fadeIn 0.5s 1s forwards;
 }
-.period-div{
-    position: relative;
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
 }
+@media(max-width: 1028px){
+    .periods{
+        flex-direction: column;
+    }
+    .bold-labelEdu{
+        margin-bottom: 350px;
+    }
+}
+@media(max-width: 450px){
+    .bold-labelEdu{
+        margin-bottom: 180px;
+    }
+}
+
+

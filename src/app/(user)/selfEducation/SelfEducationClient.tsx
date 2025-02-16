@@ -1,28 +1,28 @@
 'use client'
-import { AnimatedBox } from '@/app/UI/animatedBox/AnimatedBox';
 import './styles.scss'
-import { PeriodsProps } from '@/utils';
+import { periodsAtom, PeriodsProps } from '@/utils';
 import { Period } from '@/app/UI/period/Period';
+import {useAtom } from 'jotai';
 import { useEffect } from 'react';
+
 
 export default function SelfEducationClinet ({
     periods
 }:{
     periods: PeriodsProps[]
 }) {
+    const [periodsA, setPeriodsA] = useAtom(periodsAtom);
 
-    const handlePeriodClick = () => {
-        
-    }
     useEffect(() =>{
-        periods.forEach(element => {
-            console.log(element.title_image)
-        });
-    },[periods])
+        setPeriodsA(periods)
+        console.log(periods)
+    }
+        ,[periodsA])
+
 
     return (
         <div className="education-page flex justify-center flex-col">
-            <h1 className='bold-label'>Темы</h1>
+            <h1 className='bold-labelEdu'>Темы</h1>
             <div className='periods'>
                 {periods.length > 0 && periods.map((period) => (
                     <div key={period.id} className='period-div'>

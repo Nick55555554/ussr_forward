@@ -1,0 +1,1 @@
+Copyright (C) 2006-2008 Alexey Kryukov <alexios@thessalonica.org.ru>

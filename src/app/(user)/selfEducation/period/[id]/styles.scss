@@ -1,0 +1,71 @@
+@use  "../../../../layout.scss" as *;
+.period_Page{
+    padding-top: 100px;
+}
+.h_period_sector{
+    position: absolute;
+    z-index: 10;
+    font-weight: 700;
+    color:white;
+    font-size: 56px;
+    z-index: 101;
+}
+.sectors{
+    position: relative;
+    display: flex;
+    padding: 30px 0;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    flex-wrap: wrap;
+    gap:30px
+}
+.overlay {
+    position: absolute; 
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%,-50%);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.951), rgba(0, 0, 0, 0.955));
+    border-radius: 5%; 
+    opacity: 0.4; 
+    z-index: 101;
+    width: 510px;
+    
+    height: 287px;
+}
+@media(max-width: 680px){
+    .overlay{
+        height: 230px;
+        width: 410px;
+    }
+    .h_period_sector{
+        font-size: rem(52);
+    }
+    .sectors{
+        gap: 0;
+    }
+}
+@media(max-width: 450px){
+    .overlay{
+        height: 174px;
+        width: 310px;
+    }
+    .h_period_sector{
+        font-size: rem(40);
+    }
+}
+.menu{
+    overflow: visible;
+}
+
+.bold-label{
+    display: block;
+    font-weight: 700;
+    padding: 20px 0 20px 100px;
+    box-sizing: border-box;
+    font-size: rem(84);
+    opacity: 1;
+    transition: all 0.5s ease;
+}

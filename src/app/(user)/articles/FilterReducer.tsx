@@ -5,7 +5,7 @@ type Filters = {
     themes:string[];
     dateRange: [Date | null, Date | null];
     searchTerm: string;
-    rating: number[];
+    rate: number[];
 };
 interface State{
     articles: ArticlesProps[];
@@ -18,7 +18,7 @@ export const initialState: State = {
             themes: [],
             dateRange: [null, null],
             searchTerm: '',
-            rating: [],
+            rate: [],
         }
 };
 type Action =
@@ -52,7 +52,7 @@ export const reducer = (state: State, action: Action): State => {
                 ...state,
                 filters: {
                     ...state.filters,
-                    rating: action.payload,
+                    rate: action.payload,
                 },
             };
         case 'SET_DATE_RANGE':

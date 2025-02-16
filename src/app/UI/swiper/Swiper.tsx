@@ -16,6 +16,7 @@ const Swiper1: React.FC<SwiperProps> = ({ children }) => {
     
     return (
         <>
+        <h1 className='let40'>В период 1917-1956 гг. * </h1>
         <Swiper
             spaceBetween={20}
             modules={[Pagination]}
@@ -37,48 +38,109 @@ const Swiper1: React.FC<SwiperProps> = ({ children }) => {
         >
             <SwiperSlide>
             <div className="inSlide">
-                <h2 className='main-h2'>3 миллиона людей</h2>
-                <h6 className='main-h6'>
-                    Было вылечено от холеры 
-                </h6>
+            <h2 className='main-h2'>
+                    В 20 раз
+                </h2>
+                <h5 className='main-h6'>
+                    Возросло производство промышленной продукции на душу населения
+                </h5>
+            </div>
+            </SwiperSlide>
+            <SwiperSlide>
+            <div className="inSlide">
+                <h1 className='main-h2'>В 5 раз</h1>
+                <h5 className='main-h6'>
+                    Возросли доходы от сельского хозяйства 
+                </h5>
             </div>
             </SwiperSlide>
             <SwiperSlide>
             <div className="inSlide">
                 <h2 className='main-h2'>
-                    6 миллионов людей
+                    В 12 раз
                 </h2>
-                <h6 className='main-h6'>
-                    Было освобождено амнистией 1963 года
-                </h6>
+                <h5 className='main-h6'>
+                    Поднялись национальные доходы на душу населения
+                </h5>
             </div>
             </SwiperSlide>
             <SwiperSlide>
-            <div className="inSlide">1</div>
-            </SwiperSlide>
-            <SwiperSlide>
-                <div className="inSlide">1</div>
-            </SwiperSlide>
-            <SwiperSlide>
-                <div className="inSlide">1</div>
-            </SwiperSlide>
-            <SwiperSlide>
-                <div className="inSlide">1</div>
-            </SwiperSlide>
-            <SwiperSlide>
-                <div className="inSlide">1</div>
-            </SwiperSlide>
-            <SwiperSlide>
-                <div className="inSlide">1341</div>
-            </SwiperSlide>            <SwiperSlide>
-                <div className="inSlide">1134</div>
-            </SwiperSlide>
-            <SwiperSlide>
-                <div className="inSlide">1341</div>
-            </SwiperSlide>
+                <div className="inSlide">
+                <h2 className='main-h2'>
+                    В 9 раз
+                </h2>
+                <h5 className='main-h6'>
+                
+                    Возросла добыча нефти
+                    Возросла<br/>производительность труда рабочих<br/>
+                    Возросла добыча чугуна
 
-            
+                </h5>
+                </div>
+            </SwiperSlide>
+            <SwiperSlide>
+                <div className="inSlide">
+                <h2 className='main-h2'>
+                    В 73 раза
+                </h2>
+                <h5 className='main-h6'>
+                    Увеличилось производство электроэнергии
+                </h5>
+                </div>
+            </SwiperSlide>
+            <SwiperSlide>
+                <div className="inSlide">
+                    <h2 className='main-h2'>
+                        В 13 раз
+                    </h2>
+                    <h5 className='main-h6'>
+                        Возросла добыча угля
+                    </h5>
+                </div>
+            </SwiperSlide>
+            <SwiperSlide>
+                <div className="inSlide">
+                <h2 className='main-h2'>
+                    В 14 раз
+                </h2>
+                <h5 className='main-h6'>
+                    Увиличилось производство стали
+                </h5>
+                </div>
+            </SwiperSlide>  
+            <SwiperSlide>
+                <div className="inSlide">
+                <h2 className='main-h2'>
+                    В 15 раз
+                </h2>
+                <h5 className='main-h6'>
+                    Увеличилось производство молочных продуктов
+                </h5>
+                </div>
+            </SwiperSlide>          <SwiperSlide>
+                <div className="inSlide">
+                <h2 className='main-h2'>
+                    В 4 раза
+                </h2>
+                <h5 className='main-h6'>
+                    Возросло производство хлопчатобумажных изделий
+                </h5>
+                </div>
+            </SwiperSlide>
+            <SwiperSlide>
+                <div className="inSlide">
+                <h1 className='main-h2'>
+                    *
+                </h1>
+                <h4 className='main-h6'>
+                    <a href='https://vk.com/wall-61771654_6486'
+                    className="text-blue-600">
+                    Больше достижений советского союза 
+                    </a>
 
+                </h4>
+                </div>
+            </SwiperSlide> 
         </Swiper>
         </>
     )
