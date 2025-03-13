@@ -1,4 +1,5 @@
 'use client'
+import Image from "next/image";
 import "./styles.scss"
 import { transliterate } from 'transliteration';
 
@@ -23,10 +24,10 @@ const SectionPersonPart: React.FC<SectionBookPartProps> = (
     }
     return(
         <div className="SectionPersonPart">
-                <img
+                <Image
                 src={title_image}
                 alt={name}
-                
+                fill={true}
                 className="sect-img
                 rounded-2xl
                 cursor-pointer

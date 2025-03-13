@@ -2,6 +2,7 @@
 import {signIn, useSession } from "next-auth/react";
 import Link from "next/link";
 import sickle from "@/img/serp.webp"
+import Image from "next/image";
 import { RouterComponent } from "./routerComponent";
 import { useEffect, useRef, useState } from "react";
 
@@ -52,7 +53,6 @@ export default function NavMenu() {
 
         window.addEventListener('resize', handleResize);
     },[])
-    useEffect(() => console.log(widthwindow),[])
 
     const handleNav = () => {
         setVisNav(!visNav);
@@ -63,7 +63,8 @@ export default function NavMenu() {
         {widthwindow > 1024 ? 
         <div className="static-head">
                 <RouterComponent url="/">
-                <img className="sickle-img" src={sickle.src}  alt="Показатели"/>
+                <Image className="sickle-img" src={sickle.src}  alt="Показатели"
+                fill={true}/>
                 </RouterComponent>
 
                 <nav className="nav">
@@ -92,9 +93,9 @@ export default function NavMenu() {
             <>
             <div className="mini-nav">
             
-            <img className="sickle-img" src={sickle.src}  alt="Показатели"
-            onClick={handleNav}
-            />    
+            <Image className="sickle-img" src={sickle.src}  alt="Показатели"
+            fill={true}
+            onClick={handleNav}/>    
             </div>
             {visNav &&
                 <RouterComponent>

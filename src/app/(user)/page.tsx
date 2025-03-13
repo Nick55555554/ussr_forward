@@ -1,6 +1,5 @@
 import HomeClientComponent from "./mainPage/HomeClient";
 import { getArticles, getPeriods } from "@/utils";
-import { handleRating } from "@/utils";
 const HomeServerComponent = async () => {
     const articles = await getArticles();
     const periods = await getPeriods();

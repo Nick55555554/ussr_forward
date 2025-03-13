@@ -7,7 +7,6 @@ export default function About(){
     useEffect(() => {
     const timer = setTimeout(() => {
         setText(true)        
-        console.log(text)
     }, 1000); 
 
     return () => clearTimeout(timer);

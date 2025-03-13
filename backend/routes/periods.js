@@ -14,7 +14,6 @@ periodsRouter.get('/', async (req, res) => {
     }
 })
 periodsRouter.post('/send', async(req,res) => {
-    console.log('Полученные данные:', req.body);
     try {
         
         const { name, start_date, end_date, title_image} = req.body;
@@ -36,7 +35,6 @@ periodsRouter.post('/send', async(req,res) => {
 });
 
 periodsRouter.post('/person/send', async(req,res) => {
-    console.log('Полученные данные:', req.body);
     try {
         
         const { name, period_id, title_image} = req.body
@@ -57,7 +55,6 @@ periodsRouter.post('/person/send', async(req,res) => {
 });
 
 periodsRouter.post('/book/send', async(req,res) => {
-    console.log('Полученные данные:', req.body);
     try {
         
         const { title, period_id, title_image,author} = req.body;
@@ -83,7 +80,6 @@ periodsRouter.post('/book/send', async(req,res) => {
 });
 
 periodsRouter.post('/movie/send', async(req,res) => {
-    console.log('Полученные данные:', req.body);
     try {
         const { name, period_id, title_image, director} = req.body;
         

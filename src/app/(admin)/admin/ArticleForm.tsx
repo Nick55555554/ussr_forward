@@ -4,6 +4,7 @@ import { FormValues, submitArticle } from './sumbit_Utils';
 import { useSession } from 'next-auth/react';
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import { url } from '@/utils';
 
 
 
@@ -13,9 +14,7 @@ export const ArtcileForm = () => {
     const router = useRouter();
     const onSubmit: SubmitHandler<FormValues> = async (data:FormValues) => {
         try {
-            console.log(data)
-            const result = await submitArticle(data); 
-            console.log('Успешно отправлено:', result);
+            await submitArticle(data); 
         } catch (error) {
             console.error('Ошибка при отправке:', error);
         }
@@ -23,9 +22,9 @@ export const ArtcileForm = () => {
     
     useEffect(() => {
         if(session?.user?.email != 'nick.grathev.2006@gmail.com'){
-            router.replace(`http://localhost:3000`)
+            router.replace(`${url}`)
         }
-    },[])
+    },[session?.user?.email, router])
     return(
         <form onSubmit={handleSubmit(onSubmit)}>
             <div className='formDiv'>

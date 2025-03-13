@@ -113,3 +113,23 @@ export const getPeriods = async () => {
     const body = await result.json()
     return body
 };
+
+export const getPinnedArticles = (user_email:any):Promise<any> => {
+    return fetch(`${url}/api/pinArticle/get`, { 
+        method: "POST",
+        headers: {
+            "Content-type": "application/json"
+        },
+        body: JSON.stringify({ user_email })
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json(); 
+    })
+    .catch(error => {
+        console.error('Error sending data:', error);
+        throw error
+    });
+}

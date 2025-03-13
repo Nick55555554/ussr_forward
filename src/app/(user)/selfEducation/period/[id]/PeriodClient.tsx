@@ -29,10 +29,8 @@ export default function PeriodClient() {
             console.error('Router is not available');
         }
     }
-    useEffect(()=> console.log(periodsA) ,[periodsA])
     const articlesHandler = () => {
         const ourPeriod:PeriodsProps[] = periodsA.filter(one => one.id === Number(id))
-        console.log(ourPeriod)
         if(router && ourPeriod){
             const periodName = ourPeriod[0]?.name;
             router.replace(`/articles?theme=${encodeURIComponent(periodName)}`)
@@ -50,6 +48,7 @@ export default function PeriodClient() {
                 relative rounded-2xl cursor-pointer animate_l"
                 >
                     <Image src={books}
+                    fill={true}
                     className="
                     rounded-2xl
                     "   
@@ -71,6 +70,7 @@ export default function PeriodClient() {
                     className="
                     rounded-xl
                     "      
+                    fill={true}
                     height={330}
                     alt="Title Image"
                     />
@@ -91,6 +91,8 @@ export default function PeriodClient() {
                     className="
                     rounded-2xl
                     "
+                    
+                    fill={true}
                     height={330}
                     alt="Title Image"
                     />
@@ -115,7 +117,7 @@ export default function PeriodClient() {
                     className="
                     rounded-xl
                     "
-                    
+                    fill={true}
                     height={330}
                     alt="Title Image"
                     />

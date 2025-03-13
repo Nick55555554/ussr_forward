@@ -6,7 +6,6 @@ const rateRouter = express.Router();
 rateRouter.post('/', async (req,res)=> {
     const {article_id, user_email,degree} = req.body;
 
-    console.log('Received data:', req.body); 
 
     if (!degree) {
         return res.sendStatus(400); 

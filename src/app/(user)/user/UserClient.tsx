@@ -2,15 +2,13 @@
 import { ArticlesProps } from "@/utils";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
-import { getPinnedArticles } from "./page";
+import { getPinnedArticles } from "@/utils";
 import { AnimatedBox } from "@/app/UI/animatedBox/AnimatedBox";
 import { Article } from "@/app/UI/article/Article";
 import './styles.scss'
 
 export default function UserClient(){
-    const session = useSession();;
-    
-    
+    const session = useSession();;    
     const [articlesData, setArticlesData] = useState<ArticlesProps[]>();
     
     useEffect(() => {

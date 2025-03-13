@@ -1,5 +1,5 @@
 'use client'
-import { useState, useEffect } from "react";
+import Image from "next/image";
 import "./styles.scss"
 interface SectionBookPartProps{
     id: number;
@@ -15,10 +15,10 @@ const SectionBookPart: React.FC<SectionBookPartProps> = (
     }
     return(
         <div className="SectionBookPart">
-                    <img
+                    <Image
                     src={title_image}
                     alt={title}
-                    
+                    fill={true}
                     className="sect-img
                     "
                 />

@@ -1,5 +1,6 @@
 'use client'
-import { useState, useEffect } from "react";
+import Image from "next/image";
+
 import "./styles.scss"
 interface SectionBookPartProps{
     id: number;
@@ -16,10 +17,10 @@ const SectionFilmPart: React.FC<SectionBookPartProps> = (
     }
     return(
         <div className="SectionFilmPart">
-                    <img
+                    <Image
                     src={title_image}
                     alt={name}
-                    
+                    fill={true}
                     className="sectfilm-img"
                 />
                 <button className="

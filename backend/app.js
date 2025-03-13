@@ -33,11 +33,11 @@ app.use((req, res, next) => {
 
     res.setHeader("Last-Modified", new Date().toUTCString()); 
     
-    console.log(`${req.method} ${req.url}`);
 
     next();
 });
 app.use("/api/articles", router);
+app.use("/api/articles::id", router);
 
 app.use('/api/pinArticle',pinnedRouter)
 

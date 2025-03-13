@@ -80,7 +80,6 @@ export default function ArtilceClient() {
 
     const generateDoc = async () => {
         const illustrations = dataArticles?.illustrations || [];
-        
         const children: any = [];
         
         if (paragraphs) {
@@ -165,7 +164,6 @@ export default function ArtilceClient() {
     
             Packer.toBlob(doc).then((blob) => {
                 saveAs(blob, dataArticles?.title);
-                console.log("Document created successfully");
             });
         } else {
             console.error("No paragraphs available");
@@ -189,7 +187,6 @@ export default function ArtilceClient() {
             }
     
             const data = await response.json(); 
-            console.log(data)
         } catch (error) {
             console.error('Error sending data:', error);
         }
@@ -216,7 +213,6 @@ export default function ArtilceClient() {
 
     //Оценка статьи
     const rateArticle = async ( article_id:any, user_email:any, degree:number) => {
-        console.log(Number(id),user_email, degree )
         try {
             const response = await fetch(`${url}/api/rateArticle`, {
                 method: 'POST',

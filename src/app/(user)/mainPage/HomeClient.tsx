@@ -10,6 +10,7 @@ import { useEffect, useRef, useState } from "react"
 import Swiper1 from "@/app/UI/swiper/Swiper"
 import { Article } from "@/app/UI/article/Article"
 import { ArticlesProps, PeriodsProps } from "@/utils"
+import Image from "next/image"
 
 export default function HomeClientComponent({
   articles, periods
@@ -64,8 +65,8 @@ export default function HomeClientComponent({
         <div className="title-div">
         <div className={`VSS ${text ? "ani-b" : ""}`}>Великий Советский Союз,</div>
         <div className={`FORWARD ${text ? "ani-r" : ""}`}>ВПЁРЕД!</div>
-            <img
-            
+            <Image
+             fill={true}
             className="title-img"
             alt="Советский союз"
             src={title.src}
@@ -74,13 +75,13 @@ export default function HomeClientComponent({
         </div>
         <div className="split-line"></div>
 
-      <Swiper1 children={<img alt="Цифры"/>}/>
+      <Swiper1/>
 
       <div className="flex-statistic">
 
         <AnimatedBox>
         <div className="vignette">
-          <img src = {statistic1.src} className="back-img" alt="Показатели"/>
+          <Image src = {statistic1.src} className="back-img" alt="Показатели" fill={true}/>
           <h4 className="statistic-text1">Построено 10000 новых промышленных предприятий!</h4>
           <h4 className="statistic-text2">Было достигнуто первенство в производстве электроэнергии</h4>
           </div>
@@ -88,7 +89,7 @@ export default function HomeClientComponent({
 
         <AnimatedBox>
           <div className="vignette">
-            <img src = {statistic2.src} className="back-img"  alt="Показатели" />
+            <Image src = {statistic2.src} className="back-img"  alt="Показатели" fill={true}/>
             <h4 className="statistic-text1">Количество образованных людей выросло на 50%</h4>
             <h4 className="statistic-text2">Было построено более 30000 километров железных дорог!</h4>
           </div>

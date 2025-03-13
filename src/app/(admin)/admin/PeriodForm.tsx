@@ -9,9 +9,7 @@ export const PeriodForm = () => {
 
     const onSubmit: SubmitHandler<PeriodsProps> = async (data:PeriodsProps) => {
         try {
-            console.log(data)
-            const result = await submitPeriod(data); 
-            console.log('Успешно отправлено:', result);
+            await submitPeriod(data); 
         } catch (error) {
             console.error('Ошибка при отправке:', error);
         }

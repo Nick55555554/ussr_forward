@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import "../layout.scss";
 import SessionProvider from "../components/SessionComponent";
 import { getServerSession } from "next-auth";
-import NavMenu from "../components/NavMenu";
 import { SingOut } from "../components/SingOut";
 
 export const metadata: Metadata = {

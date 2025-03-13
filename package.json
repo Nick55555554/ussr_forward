@@ -7,8 +7,7 @@
     "dev": "next dev --turbopack",
     "start": "next start",
     "lint": "next lint",
-    "build": "next build",
-    "postbuild": "next-sitemap"
+    "build": "next build"
   },
   "dependencies": {
     "@prisma/client": "^6.2.1",
@@ -23,9 +22,8 @@
     "file-type": "^20.0.0",
     "jotai": "^2.10.4",
     "lucide-react": "^0.471.1",
-    "next": "^15.1.4",
+    "next": "^15.2.2",
     "next-auth": "^4.24.11",
-    "next-sitemap": "^4.2.3",
     "pdfkit": "^0.16.0",
     "pg": "^8.13.1",
     "pg-promise": "^11.10.2",
@@ -58,6 +56,6 @@
     "sass-loader": "^16.0.4",
     "style-loader": "^4.0.0",
     "tailwindcss": "^3.4.1",
-    "typescript": "^5"
+    "typescript": "^5.8.2"
   }
 }

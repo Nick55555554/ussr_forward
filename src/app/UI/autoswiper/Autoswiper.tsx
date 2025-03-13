@@ -20,7 +20,6 @@ export default function Autoswipper(
             router.push(`/selfEducation/period/${id}`)
         }
     }
-    useEffect(() => console.log(periods),[periods])
     
     return (
         <>

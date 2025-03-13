@@ -1,5 +1,5 @@
 import { ArticlesClientComponent } from "./articlesClient"
-import { getArticles, url } from "@/utils"
+import { getArticles } from "@/utils"
 import { handleRating } from "@/utils";
 
 

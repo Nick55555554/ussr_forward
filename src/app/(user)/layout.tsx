@@ -29,7 +29,7 @@ export default async function AppLayout({
             <ul className="ul">
               <li className="li">
                 Контактный телефон:
-                <div className="dannie">+134123481</div>
+                <div className="dannie">+79139598765</div>
               </li>
               <li className="li">
                 <div className="dannie">

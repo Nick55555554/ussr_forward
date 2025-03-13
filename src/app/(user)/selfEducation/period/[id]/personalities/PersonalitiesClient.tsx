@@ -17,8 +17,7 @@ export default function PersonalitiesClient(){
             personalitiesFetch()
         }
 
-    },[])
-    useEffect(() => console.log(personalities),[personalities])
+    },[id])
     return(
         <div className="person-page">
             <div className="SectionPersonsParts">

@@ -2,7 +2,7 @@
 import { BooksProps, FilmsProps, PersonalitiesProps } from "@/utils";
 import { FieldError, SubmitHandler, useForm } from "react-hook-form";
 import { addBook, addMovie, addPerson } from "./sumbit_Utils";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 
 export const PeriodChunks = () =>{
@@ -51,15 +51,13 @@ const Person = ({id}: IdProps) => {
             }
             if (id){
                 data.period_id = id;
-                const result = await addPerson(data);
-                console.log('Успешно отправлено:', result)
+                await addPerson(data);
             }
             
         } catch (error) {
             console.error('Ошибка при отправке:', error)
         }
     }
-    useEffect(() => console.log(id),[id])
     
     return(
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -103,7 +101,6 @@ const Book = ({id}: IdProps) => {
             if (id){
                 data.period_id = id;
                 const result = await addBook(data);
-                console.log('Успешно отправлено:', result)
             }
         } catch (error) {
             console.error('Ошибка при отправке:', error)
@@ -161,7 +158,6 @@ const Movie = ({id}: IdProps) => {
             if (id){
                 data.period_id = id;
                 const result = await addMovie(data);
-                console.log('Успешно отправлено:', result)
             }
             
         } catch (error) {

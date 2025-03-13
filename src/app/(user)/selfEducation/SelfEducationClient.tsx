@@ -15,7 +15,6 @@ export default function SelfEducationClinet ({
 
     useEffect(() =>{
         setPeriodsA(periods)
-        console.log(periods)
     }
         ,[periodsA])
 

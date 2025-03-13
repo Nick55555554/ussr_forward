@@ -18,7 +18,7 @@ export default function FilmClient(){
             booksFetch()
         }
 
-    },[])
+    },[id])
     
     return(
         <div className="films-page">

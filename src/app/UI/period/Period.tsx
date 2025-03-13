@@ -1,9 +1,7 @@
 "use client"
-import { useEffect, useState } from "react";
 import "./styles.scss"
 import { PeriodsProps } from "@/utils";
 import {usePathname, useRouter} from "next/navigation";
-
 import { AnimatedBox } from "../animatedBox/AnimatedBox";
 import Image from "next/image";
 
@@ -28,7 +26,7 @@ export const Period: React.FC<PeriodsProps> = (
             <div className="flex justify-center items-center period"
             onClick={toPeriod}
             >
-                <img
+                <Image
                 src={title_image}
                 alt="Title Image"
                 className="

@@ -1,6 +1,7 @@
 "use client"
 import { useState } from "react";
 import "./styles.scss"
+import Image from "next/image";
 import { FaArrowRight } from "react-icons/fa";
 import { useRouter } from "next/navigation";
 import { ArticlesProps } from "@/utils";
@@ -38,7 +39,8 @@ export const Article: React.FC<ArticlesProps> = ({id, content, author, title, im
         <div className={`${onMouse ? "start_text": "many_text" }`}>
             {content}
             </div>
-        <img src={image} className={`${onMouse ? "": "invisible" } img`} alt="Фото"/>
+        <Image src={image} className={`${onMouse ? "": "invisible" } img`} alt="Фото"
+        fill={true}/>
         <div className={`${onMouse ? "": "line" }`}></div>
         {!onMouse ?
         <div className="details" onClick={toArticle}>

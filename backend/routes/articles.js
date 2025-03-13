@@ -13,7 +13,6 @@ router.get('/',async(req,res) => {
     }
 });
 router.post('/send', async(req,res) => {
-    console.log('Полученные данные:', req.body);
     try {
         
         const { author, theme, content, title, image} = req.body;

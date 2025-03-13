@@ -7,8 +7,6 @@ const pinnedRouter = express.Router();
 pinnedRouter.post('/create', async (req, res) => {
     const { article_id, user_email } = req.body;
 
-    console.log('Received data:', req.body); 
-
     if (!article_id || !user_email) {
         return res.sendStatus(400); 
     }
@@ -25,8 +23,6 @@ pinnedRouter.post('/create', async (req, res) => {
 
 pinnedRouter.post('/remove', async (req, res) => {
     const { article_id, user_email } = req.body;
-
-    console.log('Received data:', req.body); 
 
     if (!article_id || !user_email) {
         return res.sendStatus(400); 
@@ -63,8 +59,6 @@ pinnedRouter.post('/remove', async (req, res) => {
 });
 pinnedRouter.post('/get', async (req, res) => {
     const {user_email } = req.body;
-
-    console.log('Received data:', req.body); 
 
     if (!user_email) {
         return res.sendStatus(400); 

@@ -8,11 +8,8 @@ import 'swiper/css/pagination';
 import "swiper/css/effect-fade"
 import { Pagination } from 'swiper/modules';
 
-interface SwiperProps{
-    children: ReactNode;
-}
 
-const Swiper1: React.FC<SwiperProps> = ({ children }) => {
+const Swiper1 = () => {
     
     return (
         <>
@@ -134,7 +131,8 @@ const Swiper1: React.FC<SwiperProps> = ({ children }) => {
                 </h1>
                 <h4 className='main-h6'>
                     <a href='https://vk.com/wall-61771654_6486'
-                    className="text-blue-600">
+                    className="text-blue-600"
+                    target="_blank">
                     Больше достижений советского союза 
                     </a>
 

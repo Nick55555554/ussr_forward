@@ -8,7 +8,6 @@ export type FormValues = {
     image: string
 }
 export const submitArticle = async (data: FormValues) => {
-    console.log('Отправляемые данные:', data);
     const response = await fetch(`${url}/api/articles/send`, {
         method: 'POST',
         headers: {
@@ -28,7 +27,6 @@ export const submitArticle = async (data: FormValues) => {
 };
 
 export const submitPeriod = async (data: PeriodsProps) => {
-    console.log('Отправляемые данные:', data);
     const response = await fetch(`${url}/api/periods/send`, {
         method: 'POST',
         headers: {
@@ -48,7 +46,6 @@ export const submitPeriod = async (data: PeriodsProps) => {
 };
 
 export const addPerson = async (data: PersonalitiesProps) => {
-    console.log('Отправляемые данные:', data);
     const response = await fetch(`${url}/api/periods/person/send`, {
         method: 'POST',
         headers: {
@@ -68,7 +65,6 @@ export const addPerson = async (data: PersonalitiesProps) => {
 };
 
 export const addBook = async (data: BooksProps) => {
-    console.log('Отправляемые данные:', data);
     const response = await fetch(`${url}/api/periods/book/send`, {
         method: 'POST',
         headers: {
@@ -84,12 +80,10 @@ export const addBook = async (data: BooksProps) => {
         throw new Error(`Ошибка при отправке данных: ${errorText}`);
     }
     const res = response.json()
-    console.log("Otvet:", res);
     return res;
 };
 
 export const addMovie = async (data: FilmsProps) => {
-    console.log('Отправляемые данные:', data);
     const response = await fetch(`${url}/api/periods/movie/send`, {
         method: 'POST',
         headers: {

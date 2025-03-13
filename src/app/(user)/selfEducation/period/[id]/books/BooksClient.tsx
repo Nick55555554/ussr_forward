@@ -17,8 +17,7 @@ export default function BooksClient(){
             booksFetch()
         }
 
-    },[])
-    useEffect(() => console.log(books),[books])
+    },[id])
     return(
         <div className="books-page">
             <div className="SectionBookParts">
@@ -34,7 +33,6 @@ export default function BooksClient(){
                 ))
                 }
             </div>
-
         </div>
     )
 }
